@@ -16,6 +16,8 @@ Once the application receives the SQL query and parameters, it performs the subs
 
 This application is useful in environments where dynamic and customized SQL queries need to be executed, allowing the flexibility of providing parameters dynamically without compromising the security of the application.
 
+## Ejemplo
+
 - Ejemplo de query
 
 ```sql
