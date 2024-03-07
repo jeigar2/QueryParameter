@@ -46,10 +46,10 @@ document.getElementById("clearButton").addEventListener("click", clearFields);
 setWidth();
 
 /*
-2023-10-27 12:24:10,203 DEBUG IFacturaATRPdPDAO.findFicherosBasePdPDTO ooo Using Connection [org.jboss.jca.adapters.jdbc.jdk8.WrappedConnectionJDK8@62b30f94]
-2023-10-27 12:24:10,203 DEBUG IFacturaATRPdPDAO.findFicherosBasePdPDTO ooo Using Connection [org.jboss.jca.adapters.jdbc.jdk8.WrappedConnectionJDK8@62b30f94]
-2023-10-27 12:24:10,204 DEBUG IFacturaATRPdPDAO.findFicherosBasePdPDTO ==>  Preparing: SELECT FAC.X_FACTURA_ATR_HUELLA, FAC.PUN_X_CUPS_20, FAC.D_CODIGO_FISCAL, FAC.F_FECHA_FACTURA, KGT.FIC_X_NOMBRE_FICHERO AS NOMBRE_FICHERO_ZIP, KGT.D_NOMBRE_FICHERO_PLANO AS NOMBRE_FICHERO_PLANO FROM V_SAT_FACTURAS_ATR FAC LEFT JOIN KGT_FICHEROS_BLOQUES KGT ON FAC.X_FACTURA_ATR_HUELLA = KGT.X_HUELLA WHERE FAC.D_CODIGO_FISCAL IN ( ? ) AND FAC.F_FECHA_FACTURA IN ( ? ) AND FAC.LINEG_X_LINEA_NEGOCIO=? AND FAC.PAI_X_PAIS=? AND FAC.X_FACTURA_ATR_HUELLA IN ( ? )
-2023-10-27 12:24:10,204 DEBUG IFacturaATRPdPDAO.findFicherosBasePdPDTO ==> Parameters: 19070117440(String), 15/07/2019(String), 2(Long), 2(Long), 2306061014267641601000000110267(BigDecimal)
-2023-10-27 12:24:10,250 TRACE IFacturaATRPdPDAO.findFicherosBasePdPDTO <==    Columns: X_FACTURA_ATR_HUELLA, PUN_X_CUPS_20, D_CODIGO_FISCAL, F_FECHA_FACTURA, NOMBRE_FICHERO_ZIP, NOMBRE_FICHERO_PLANO
-2023-10-27 12:24:10,250 TRACE IFacturaATRPdPDAO.findFicherosBasePdPDTO <==    Columns: X_FACTURA_ATR_HUELLA, PUN_X_CUPS_20, D_CODIGO_FISCAL, F_FECHA_FACTURA, NOMBRE_FICHERO_ZIP, NOMBRE_FICHERO_PLANO
+2023-10-27 12:24:10,203 DEBUG Clase.metodo1 ooo Using Connection [org.jboss.jca.adapters.jdbc.jdk8.WrappedConnectionJDK8@62b30f94]
+2023-10-27 12:24:10,203 DEBUG Clase.metodo1 ooo Using Connection [org.jboss.jca.adapters.jdbc.jdk8.WrappedConnectionJDK8@62b30f94]
+2023-10-27 12:24:10,204 DEBUG Clase.metodo1 ==>  Preparing: SELECT T0.Campo1, T0.Campo2, T0.Id_T1, T0.Campo4, T1.Campo5, T1.Campo6 FROM Tabla0 T0 LEFT JOIN Tabla1 T1 ON T0.Campo1 = T1.Id WHERE T0.Id_T1 IN ( ? ) AND T0.Campo4 IN ( ? ) AND T0.Campo7 =? AND T0.Campo8 =? AND T0.Campo1 IN ( ? )
+2023-10-27 12:24:10,204 DEBUG Clase.metodo1 ==> Parameters: 19070117440(String), 15/07/2019(String), 2(Long), 2(Long), 2306061014267641601000000110267(BigDecimal)
+2023-10-27 12:24:10,250 TRACE Clase.metodo1 <==    Columns: Campo1, Campo2, Id_T1, Campo4, Campo5, Campo6
+2023-10-27 12:24:10,250 TRACE Clase.metodo1 <==    Columns: Campo1, Campo2, Id_T1, Campo4, Campo5, Campo6
 */

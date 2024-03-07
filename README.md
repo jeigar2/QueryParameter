@@ -1,4 +1,4 @@
-# QueryParameter v.0.1
+# QueryParameter v.0.2
 
 ## Descripción en español:
 
@@ -18,22 +18,15 @@ This application is useful in environments where dynamic and customized SQL quer
 
 ## Ejemplo
 
-- Ejemplo de query
+- Ejemplo de traza
 
 ```sql
-SELECT T0.Campo1,
-       T0.Campo2,
-       T0.Campo3,
-       T0.Campo4,
-       T1.Campo5
-       T1.Campo6
-FROM TABLA0 T0
-LEFT JOIN TABLA1 T1 ON T0.ID_T1 = T1.ID
-WHERE T0.Campo7 IN (?)
-  AND T0.Campo8 IN (?)
-  AND T0.Campo2=?
-  AND T0.Campo3=?
-  AND T0.Campo9 IN (?)
+2023-10-27 12:24:10,203 DEBUG Clase.metodo1 ooo Using Connection [org.jboss.jca.adapters.jdbc.jdk8.WrappedConnectionJDK8@62b30f94]
+2023-10-27 12:24:10,203 DEBUG Clase.metodo1 ooo Using Connection [org.jboss.jca.adapters.jdbc.jdk8.WrappedConnectionJDK8@62b30f94]
+2023-10-27 12:24:10,204 DEBUG Clase.metodo1 ==>  Preparing: SELECT T0.Campo1, T0.Campo2, T0.Id_T1, T0.Campo4, T1.Campo5, T1.Campo6 FROM Tabla0 T0 LEFT JOIN Tabla1 T1 ON T0.Campo1 = T1.Id WHERE T0.Id_T1 IN ( ? ) AND T0.Campo4 IN ( ? ) AND T0.Campo7 =? AND T0.Campo8 =? AND T0.Campo1 IN ( ? )
+2023-10-27 12:24:10,204 DEBUG Clase.metodo1 ==> Parameters: 19070117440(String), 15/07/2019(String), 2(Long), 2(Long), 2306061014267641601000000110267(BigDecimal)
+2023-10-27 12:24:10,250 TRACE Clase.metodo1 <==    Columns: Campo1, Campo2, Id_T1, Campo4, Campo5, Campo6
+2023-10-27 12:24:10,250 TRACE Clase.metodo1 <==    Columns: Campo1, Campo2, Id_T1, Campo4, Campo5, Campo6
 ```
 
 - Ejemplo de parámetros: `19070117440(String), 15/07/2019(String), 2(Long), 2(Long), 2306061014267641601000000110267(BigDecimal)`
@@ -41,17 +34,5 @@ WHERE T0.Campo7 IN (?)
 - Salida
 
 ```sql
-SELECT T0.Campo1,
-       T0.Campo2,
-       T0.Campo3,
-       T0.Campo4,
-       T1.Campo5
-       T1.Campo6
-FROM TABLA0 T0
-LEFT JOIN TABLA1 T1 ON T0.ID_T1 = T1.ID
-WHERE T0.Campo7 IN ('19070117440')
-  AND T0.Campo8 IN ('15/07/2019')
-  AND T0.Campo2=2
-  AND T0.Campo3=2
-  AND T0.Campo9 IN (2306061014267641601000000110267)
+SELECT T0.Campo1, T0.Campo2, T0.Id_T1, T0.Campo4, T1.Campo5, T1.Campo6 FROM Tabla0 T0 LEFT JOIN Tabla1 T1 ON T0.Campo1 = T1.Id WHERE T0.Id_T1 IN ( '204 DEBUG Clase.metodo1 ==> Parameters: 19070117440' ) AND T0.Campo4 IN ( '15/07/2019' ) AND T0.Campo7 =2 AND T0.Campo8 =2 AND T0.Campo1 IN ( 2306061014267641601000000110267 )
 ```
