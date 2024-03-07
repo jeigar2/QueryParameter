@@ -4,16 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Query Builder</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>Query Builder</h1>
-    <textarea id="query" rows="10" placeholder="Ingresa la query con ? para los parámetros"></textarea><br>
-    <!--<textarea id="arguments" rows="10" placeholder="Ingresa los argumentos separados por comas"></textarea><br>-->
+    <textarea id="content" rows="10" placeholder="Ingresa la traza"></textarea><br>
     <textarea id="result" rows="10" readonly></textarea>
     <br>
-    <button onclick="buildQuery()">Construir Query</button>
-    <button onclick="clearFields()">Limpiar</button>
+    <button id="buildButton">Construir Query</button>
+    <button id="clearButton">Limpiar</button>
     <!-- Enlace para copiar salida -->
     <a href="#" onclick="copyOutputToClipboard()">Copiar Salida</a>
     <script src="script.js"></script>
