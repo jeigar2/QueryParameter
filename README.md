@@ -1,5 +1,11 @@
 # QueryParameter
 
+Por cada rama se va viendo las modificaciones y las versiones que se están creando
+
+- [v.0.1](https://github.com/jeigar2/QueryParameter/tree/QueryParameters.0.1): Tres textareas, el primer para poner la query, el segundo los argumento, el tercero para la salida la query con los paremetros reemplazados por sus valores
+- [v.0.2](https://github.com/jeigar2/QueryParameter/tree/QueryParameters.0.2): Dos textareas, el primero para poner las trazas y el segundo para poner la salida con las queries con los paremetros reemplazados por sus valores
+- [v.0.3](https://github.com/jeigar2/QueryParameter/tree/QueryParameters.0.3): Un textares, para poner las trazas, y el resultado lo pintará en una tabla una fila por query con los parametros reemplazados por sus valores, y tratando de formatear parte de la query y reconociendo algunas palabras clave.
+
 ## Descripción en español:
 
 El programa es una aplicación web que tiene la capacidad de recibir una consulta SQL junto con sus parámetros correspondientes. Por un lado, recibe la consulta SQL que contiene marcadores de posición representados por el símbolo '?', y por otro lado, recibe los parámetros junto con sus tipos de datos. El objetivo principal de esta aplicación es construir la consulta SQL final sustituyendo los marcadores de posición por los valores correspondientes de los parámetros proporcionados.
