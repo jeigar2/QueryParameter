@@ -15,3 +15,8 @@ textarea {
 pre[class*=language-]:active {
   border : 1px dotted red;
 }
+
+.contador{
+color: dark-blue;
+font-size:24pt;
+}

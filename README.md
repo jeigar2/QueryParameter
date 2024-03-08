@@ -1,4 +1,4 @@
-# QueryParameter v.0.3
+# QueryParameter v.0.4
 
 ## Descripción en español:
 
@@ -37,4 +37,8 @@ This application is useful in environments where dynamic and customized SQL quer
 SELECT T0.Campo1, T0.Campo2, T0.Id_T1, T0.Campo4, T1.Campo5, T1.Campo6 FROM Tabla0 T0 LEFT JOIN Tabla1 T1 ON T0.Campo1 = T1.Id WHERE T0.Id_T1 IN ( '204 DEBUG Clase.metodo1 ==> Parameters: 19070117440' ) AND T0.Campo4 IN ( '15/07/2019' ) AND T0.Campo7 =2 AND T0.Campo8 =2 AND T0.Campo1 IN ( 2306061014267641601000000110267 )
 ```
 
-Si se pincha la celta de la tabla, se copia el valor al portapapeles.
+## Otras acciones
+
+- Si se pincha la celda de la tabla, se copia el valor al portapapeles.
+- Se puede leer un fichero que carga en el textarea
+- Pone un resumen de todas las queries con un enlace y desde cada query se puede regresar al resumen.

@@ -35,19 +35,31 @@ function setWidth() {
 
 // Función para construir la tabla con las queries y los enlaces de copiar
 function buildTable(queries) {
+
     var tableBody = document.querySelector("#queryTable tbody");
     tableBody.innerHTML = "";
-
+    var contador = 0;
     queries.forEach(query => {
+        contador++;
         var row = document.createElement("tr");
         // Celda de la query
         var queryCell = document.createElement("td");
-        queryCell.innerHTML = '<pre data-dependencies="sql" class="language-sql" tabindex="0">' + formatSQL(query) + '</pre>';
+        queryCell.innerHTML = '<span class="contador"><a id="contador' + contador + '" href="#resumen">' + contador +'</a></span><pre data-dependencies="sql" class="language-sql" tabindex="0">' + formatSQL(query) + '</pre>';
         queryCell.addEventListener("click", function() {copyClipboard(query)});
         row.appendChild(queryCell);
         tableBody.appendChild(row);
 
     });
+    var resumen = document.getElementById("resumen");
+    var codigoAux = "<a id='resumen'>Resumen:</a>" ;
+    for(var i = 1; i <= contador; i++){
+        if(i < contador){
+            codigoAux +="<a href='#contador" + i + "'>" + i + "</a>, ";
+        } else {
+            codigoAux +="<a href='#contador" + i + "'>" + i + "</a>";
+        }
+    }
+    resumen.innerHTML = codigoAux;
      // Realizar el resaltado de sintaxis después de construir la tabla
      //Prism.highlightAll(); // no es necesario
 }
@@ -80,6 +92,22 @@ function formatSQL(sqlString) {
     return '<code class="language-sql">' + formattedSQL + '</code>';
 }
 
+// Función para manejar el evento de cambio en el input de archivo
+function handleFileUpload(event) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = function() {
+        const fileContent = reader.result;
+        document.getElementById("content").value = fileContent;
+    };
+
+    reader.readAsText(file);
+}
+
+
+// Evento de cambio para el input de archivo
+document.getElementById("fileInput").addEventListener("change", handleFileUpload);
 
 // Evento que se dispara cuando se redimensiona la pantalla
 window.addEventListener("resize", setWidth);
