@@ -22,7 +22,7 @@ function buildQuery() {
 
 function clearFields() {
     document.getElementById("content").value = "";
-    //document.getElementById("result").value = "";
+    clearTable();
 }
 
 // Función para calcular y establecer el ancho de los textareas basado en el ancho de la pantalla
@@ -50,6 +50,12 @@ function buildTable(queries) {
     });
      // Realizar el resaltado de sintaxis después de construir la tabla
      //Prism.highlightAll(); // no es necesario
+}
+
+// Función para borrar todas las filas de la tabla excepto la primera (encabezado)
+function clearTable() {
+    var tableBody = document.querySelector("#queryTable tbody");
+    tableBody.innerHTML = ""; // Elimina todas las filas del cuerpo de la tabla
 }
 
 function copyClipboard(query) {
