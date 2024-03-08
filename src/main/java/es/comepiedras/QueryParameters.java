@@ -10,6 +10,10 @@ import java.util.regex.Pattern;
 import java.util.List;
 
 public class QueryParameters {
+
+    public static final String PARAMETERS = "Parameters:";
+    public static final String PREPARING = "Preparing:";
+
     public static void main(String[] args) {
         Javalin app = AppConfing.configureApp();
 
@@ -27,13 +31,13 @@ public class QueryParameters {
             List<String> queriesWithParams = new ArrayList<>();
 
             for (String line : lines) {
-                if (line.contains("Preparing:")) {
+                if (line.contains(PREPARING)) {
                     // Guardar la query actual
                     currentQuery = line;//line.substring(11); // Eliminamos "Preparing:" del inicio de la línea
-                } else if (line.contains("Parameters:")) {
+                } else if (line.contains(PARAMETERS)) {
                     // Si encontramos "Parameters:", esta línea son los parámetros de la query anterior
                     if (currentQuery != null) {
-                        String params = line; //line.substring(11); // Eliminamos "Parameters:" del inicio de la línea
+                        String params = line.substring(line.indexOf(PARAMETERS)+11).trim(); // Eliminamos "Parameters:" del inicio de la línea
                         // Crear la query con los argumentos reemplazados
                         queriesWithParams.add(QueryParameters.reemplazarSQLConParametros( currentQuery, params));
                     }

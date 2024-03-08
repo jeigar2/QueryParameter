@@ -13,14 +13,16 @@ function buildQuery() {
     })
     .then(response => response.text())
     .then(result => {
-        document.getElementById("result").value = result;
+        var queries = result.split('\n').filter(Boolean); // Eliminar líneas vacías
+        buildTable(queries);
+        //document.getElementById("result").value = result;
     })
     .catch(error => console.error('Error:', error));
 }
 
 function clearFields() {
     document.getElementById("content").value = "";
-    document.getElementById("result").value = "";
+    //document.getElementById("result").value = "";
 }
 
 // Función para calcular y establecer el ancho de los textareas basado en el ancho de la pantalla
@@ -28,15 +30,51 @@ function setWidth() {
     var screenWidth = window.innerWidth;
     var textareaWidth = Math.floor(screenWidth * 0.9 / 8); // Asumiendo un tamaño de caracter promedio
     document.getElementById("content").cols = Math.max(50, textareaWidth); // Establece un mínimo de 50 columnas
-    document.getElementById("result").cols = Math.max(50, textareaWidth);
+    //document.getElementById("result").cols = Math.max(50, textareaWidth);
 }
 
-function copyOutputToClipboard() {
-    var outputTextarea = document.getElementById("result");
-    outputTextarea.select();
-    document.execCommand("copy");
-    //alert("Salida copiada al portapapeles: " + outputTextarea.value);
+// Función para construir la tabla con las queries y los enlaces de copiar
+function buildTable(queries) {
+    var tableBody = document.querySelector("#queryTable tbody");
+    tableBody.innerHTML = "";
+
+    queries.forEach(query => {
+        var row = document.createElement("tr");
+        // Celda de la query
+        var queryCell = document.createElement("td");
+        queryCell.innerHTML = '<pre data-dependencies="sql" class="language-sql" tabindex="0">' + formatSQL(query) + '</pre>';
+        queryCell.addEventListener("click", function() {copyClipboard(query)});
+        row.appendChild(queryCell);
+        tableBody.appendChild(row);
+
+    });
+     // Realizar el resaltado de sintaxis después de construir la tabla
+     //Prism.highlightAll(); // no es necesario
 }
+
+function copyClipboard(query) {
+            // Copiar el texto de la query al portapapeles
+            navigator.clipboard.writeText(query)
+                .then(() => console.error("Query copiada"))
+                .catch(err => console.error('Error al copiar: ', err));
+        }
+
+function formatSQL(sqlString) {
+    // Reemplazar palabras clave SQL con spans con clase de token
+    var formattedSQL = sqlString.replace(/\b(SELECT|FROM|LEFT JOIN|WHERE|ORDER BY|HAVING|GROUP BY|AND|OR)\b/g, '<span class="token keyword">$1</span>');
+    formattedSQL = formattedSQL.replace(/\b(AS|COUNT|MAX|IS NOT|NULL|DESC|ON|IN|BETWEEN|DISTINCT|ASC|DESC|NOT|CASE|THEN|WITH|INTO|LIKE|UNION|ALL|VALUES)\b/g, '<span class="token keyword2">$1</span>');
+    // Reemplazar identificadores (entre backticks) con spans con clase de token
+    formattedSQL = formattedSQL.replace(/(`[^`]+`)/g, '<span class="token identifier">$1</span>');
+    // Reemplazar funciones con spans con clase de token
+    formattedSQL = formattedSQL.replace(/\b(COUNT|MAX)\b/g, '<span class="token function">$1</span>');
+    // Reemplazar operadores con spans con clase de token
+    formattedSQL = formattedSQL.replace(/([\(\),]|[\s]=[\s]|[\s]\*[\s]|[\s]\.[\s]|[\s]IS[\s])/g, '<span class="token punctuation">$1</span>');
+    // Agregar saltos de línea después de cada punto y coma
+    formattedSQL = formattedSQL.replace(/;/g, ';\n');
+    return '<code class="language-sql">' + formattedSQL + '</code>';
+}
+
+
 // Evento que se dispara cuando se redimensiona la pantalla
 window.addEventListener("resize", setWidth);
 // Eventos de clic para los botones

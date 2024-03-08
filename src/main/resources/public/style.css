@@ -3,3 +3,15 @@ textarea {
     margin-bottom: 10px;
     min-width: 100%;
 }
+
+.token.keyword {
+    display: block;
+}
+
+.token.keyword2 {
+    color: #07a;
+}
+
+pre[class*=language-]:active {
+  border : 1px dotted red;
+}
