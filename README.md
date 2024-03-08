@@ -5,6 +5,8 @@ Por cada rama se va viendo las modificaciones y las versiones que se están crea
 - [v.0.1](https://github.com/jeigar2/QueryParameter/tree/QueryParameters.0.1): Tres textareas, el primer para poner la query, el segundo los argumento, el tercero para la salida la query con los paremetros reemplazados por sus valores
 - [v.0.2](https://github.com/jeigar2/QueryParameter/tree/QueryParameters.0.2): Dos textareas, el primero para poner las trazas y el segundo para poner la salida con las queries con los paremetros reemplazados por sus valores
 - [v.0.3](https://github.com/jeigar2/QueryParameter/tree/QueryParameters.0.3): Un textarea, para poner las trazas, y el resultado lo pintará en una tabla una fila por query con los parametros reemplazados por sus valores, y tratando de formatear parte de la query y reconociendo algunas palabras clave.
+- [v.0.4](https://github.com/jeigar2/QueryParameter/tree/QueryParameters.0.3): Un textarea, para poner las trazas, y el resultado lo pintará en una tabla una fila por query con los parametros reemplazados por sus valores, y tratando de formatear parte de la query y reconociendo algunas palabras clave. Se puede cargar un fichero de log que vuelva en el textarea. Aparece un resumen de queries que se puede acceder desde enlace y volver al resumen.
+
 
 ## Descripción en español:
 
