@@ -67,14 +67,14 @@ function copyClipboard(query) {
 
 function formatSQL(sqlString) {
     // Reemplazar palabras clave SQL con spans con clase de token
-    var formattedSQL = sqlString.replace(/\b(SELECT|FROM|LEFT JOIN|WHERE|ORDER BY|HAVING|GROUP BY|AND|OR)\b/g, '<span class="token keyword">$1</span>');
-    formattedSQL = formattedSQL.replace(/\b(AS|COUNT|MAX|IS NOT|NULL|DESC|ON|IN|BETWEEN|DISTINCT|ASC|DESC|NOT|CASE|THEN|WITH|INTO|LIKE|UNION|ALL|VALUES)\b/g, '<span class="token keyword2">$1</span>');
+    var formattedSQL = sqlString.replace(/\b(SELECT|FROM|LEFT JOIN|WHERE|ORDER BY|HAVING|GROUP BY|AND|OR)\b/gi, '<span class="token keyword">$1</span>');
+    formattedSQL = formattedSQL.replace(/\b(AS|COUNT|MAX|IS NOT|NULL|DESC|ON|IN|BETWEEN|DISTINCT|ASC|DESC|NOT|CASE|THEN|WITH|INTO|LIKE|UNION|ALL|VALUES)\bi/g, '<span class="token keyword2">$1</span>');
     // Reemplazar identificadores (entre backticks) con spans con clase de token
     formattedSQL = formattedSQL.replace(/(`[^`]+`)/g, '<span class="token identifier">$1</span>');
     // Reemplazar funciones con spans con clase de token
-    formattedSQL = formattedSQL.replace(/\b(COUNT|MAX)\b/g, '<span class="token function">$1</span>');
+    formattedSQL = formattedSQL.replace(/\b(COUNT|MAX)\b/gi, '<span class="token function">$1</span>');
     // Reemplazar operadores con spans con clase de token
-    formattedSQL = formattedSQL.replace(/([\(\),]|[\s]=[\s]|[\s]\*[\s]|[\s]\.[\s]|[\s]IS[\s])/g, '<span class="token punctuation">$1</span>');
+    formattedSQL = formattedSQL.replace(/([\(\),]|[\s]=[\s]|[\s]\*[\s]|[\s]\.[\s]|[\s]IS[\s])/gi, '<span class="token punctuation">$1</span>');
     // Agregar saltos de línea después de cada punto y coma
     formattedSQL = formattedSQL.replace(/;/g, ';\n');
     return '<code class="language-sql">' + formattedSQL + '</code>';
